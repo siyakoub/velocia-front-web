@@ -1,0 +1,67 @@
+.categories-container {
+  /* Ne jamais dépasser la largeur de la fenêtre */
+  width: 100%;
+  max-width: 100vw;
+  font-family: 'Quicksand', sans-serif;
+  // Espace au-dessus (sous la navbar par ex.)
+  margin: 0px 0;
+  padding: 10px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; // On aligne à gauche
+
+  /* Scroll horizontal si trop d'éléments */
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  /* Le contenu reste en ligne */
+  white-space: nowrap;
+
+  /* Espace standard entre les catégories */
+  gap: 20px;
+
+  background-color: #fff;
+
+  /* --- Breakpoint ex. Tablette <= 768px --- */
+  @media (max-width: 768px) {
+    padding: 8px;      // Padding un peu réduit
+    gap: 10px;         // Réduire l'écart entre pills
+  }
+
+  /* --- Breakpoint ex. Téléphone <= 480px --- */
+  @media (max-width: 480px) {
+    padding: 6px;
+    gap: 8px;
+  }
+}
+
+.category-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #e0e0e0;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+
+  &:hover {
+    background-color: #ccc;
+  }
+
+  /* --- Breakpoint Tablette <= 768px --- */
+  @media (max-width: 768px) {
+    font-size: 13px;
+    padding: 6px 12px;
+  }
+
+  /* --- Breakpoint Téléphone <= 480px --- */
+  @media (max-width: 480px) {
+    font-size: 12px;
+    padding: 4px 10px;
+  }
+}

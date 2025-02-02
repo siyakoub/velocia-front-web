@@ -1,0 +1,219 @@
+/* Div qui entoure la navbar */
+.navbar-wrapper {
+  position: relative;
+  margin-bottom: 125px;
+  @media (max-width: 480px) {
+    margin-bottom: 175px;
+  }
+
+  @media (max-width: 768px) {
+    margin-bottom: 175px;
+  }
+}
+
+/* Style existant pour la navbar */
+.navbar {
+  font-family: 'Quicksand', sans-serif;
+  background-color: #FFFFFF;
+  z-index: 4;
+  border-radius: 25px;
+  padding: 10px 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed; /* ou "fixed" si tu veux qu’elle reste toujours visible */
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 70%;
+  max-width: 1200px;
+
+  /* --- Tablettes (ex. <= 992px) --- */
+  @media (max-width: 992px) {
+    width: 80%; /* on agrandit un peu pour être plus flexible */
+    top: 15px;
+  }
+
+  /* --- Mobiles (ex. <= 768px) --- */
+  @media (max-width: 768px) {
+    width: 90%;
+    top: 10px;
+    flex-direction: column; /* Empile logo / barre de recherche / icônes */
+    gap: 10px; /* Petit espace entre les éléments */
+  }
+}
+
+.navbar-logo {
+  display: flex;
+  justify-content: flex-start;
+
+  img {
+    height: 50px; /* Ajuste si besoin */
+
+    /* --- Réduction de la taille du logo sur mobile, par exemple --- */
+    @media (max-width: 768px) {
+      height: 40px;
+    }
+  }
+}
+
+.navbar-search {
+  display: flex;
+  align-items: center;
+  position: relative;
+  background-color: #fff;
+  border-radius: 20px;
+  border: 1px solid #000;
+  padding: 8px 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  width: 300px;
+
+  @media (max-width: 992px) {
+    width: 400px;
+  }
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+
+  input {
+    flex: 1;
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+    padding: 0 8px;
+
+    &::placeholder {
+      color: #999;
+    }
+  }
+
+  .icon-search {
+    margin-left: 5px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: #2e7d32;
+    }
+  }
+}
+
+/* ... styles existants de la navbar ... */
+
+.navbar-icons {
+  display: flex;
+  align-items: center;
+
+  .icon {
+    font-size: 1.2rem;
+    margin-left: 20px;
+    cursor: pointer;
+    color: #5cd416;
+    transition: color 0.2s ease-in-out;
+
+    &:hover {
+      color: mediumseagreen;
+    }
+
+    &:active {
+      animation: greyBounce 0.4s ease-in-out;
+    }
+  }
+
+  @keyframes greyBounce {
+    0% {
+      transform: scale(1);
+      background-color: transparent;
+      box-shadow: none;
+    }
+    50% {
+      transform: scale(1.2);
+      background-color: #ccc;
+      border-radius: 50%;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+    }
+    100% {
+      transform: scale(1);
+      background-color: transparent;
+      box-shadow: none;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .icon {
+      margin-left: 10px;
+      font-size: 1.1rem;
+    }
+  }
+}
+
+/* Container pour le dropdown utilisateur */
+.user-dropdown-container {
+  position: relative;
+  display: flex; /* Pour s'aligner avec les autres icônes */
+}
+
+/* Dropdown utilisateur esthétique avec animation progressive */
+.user-dropdown {
+  position: absolute;
+  top: calc(100% + 8px); /* Un peu plus bas que l'icône */
+  right: 0;
+  background: linear-gradient(145deg, #ffffff, #f9f9f9);
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
+  padding: 8px 0;
+  z-index: 10;
+  opacity: 0;
+  transform: translateY(-10px);
+  animation: fadeInDropDown 0.3s forwards;
+  overflow: hidden;
+  min-width: 150px;
+}
+
+/* Petite flèche au-dessus du dropdown */
+.user-dropdown::before {
+  content: "";
+  position: absolute;
+  top: -8px;
+  right: 16px;
+  border-width: 0 8px 8px 8px;
+  border-style: solid;
+  border-color: transparent transparent #f9f9f9 transparent;
+}
+
+@keyframes fadeInDropDown {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.user-dropdown ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.user-dropdown li {
+  padding: 10px 20px;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.user-dropdown li:hover {
+  background-color: #e0e0e0;
+  transform: translateX(5px);
+}
+
+.user-dropdown li a {
+  display: block;
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+
+/* ... suite des styles existants ... */

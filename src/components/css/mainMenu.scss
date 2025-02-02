@@ -1,0 +1,221 @@
+.sliding-menu {
+  position: fixed;
+  top: 0;
+  right: -350px; /* Hors écran initialement */
+  width: 350px;
+  height: 100%;
+  background: linear-gradient(300deg, #e7e7e7, #5cd416);
+  box-shadow: -4px 0 15px rgba(0, 0, 0, 0.3);
+  transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+
+  &.open {
+    right: 0;
+  }
+
+  .close-btn {
+    align-self: flex-end;
+    background: transparent;
+    border: none;
+    font-size: 28px;
+    color: #fff;
+    cursor: pointer;
+    transition: transform 0.2s;
+
+    &:hover {
+      transform: rotate(90deg);
+    }
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex: 1;
+    overflow-y: auto; /* Permet le défilement vertical */
+
+    // Style pour les catégories (non cliquables)
+    li.category {
+      margin-bottom: 10px;
+      font-size: 22px;
+      font-weight: bold;
+      padding: 5px 0;
+      pointer-events: none; /* Désactive le clic */
+      color: #fff;
+      text-transform: uppercase;
+    }
+
+    // Style pour les sous-catégories (sélectionnables)
+    li.sub-category {
+      margin-bottom: 25px;
+
+      svg {
+        margin-right: 5px;
+      }
+
+      a {
+        display: flex;
+        color: #FFFFFF;
+        align-items: center;
+        font-size: 15px;
+        font-weight: 500;
+        padding: 5px 0;
+        transition: color 0.3s, transform 0.3s;
+        position: relative;
+
+        &:hover {
+          color: black;
+          transform: translateX(10px);
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: black;
+          transition: width 0.3s;
+        }
+
+        &:hover:after {
+          width: 100%;
+        }
+      }
+    }
+
+    /* Style pour le lien de la langue (similaire aux sous-catégories) */
+    .language-toggle {
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      font-weight: 500;
+      padding: 5px 0;
+      transition: color 0.3s, transform 0.3s;
+      position: relative;
+
+      svg {
+        margin-right: 5px;
+      }
+
+      &:hover {
+        color: black;
+        transform: translateX(10px);
+      }
+
+      &:after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: black;
+        transition: width 0.3s;
+      }
+
+      &:hover:after {
+        width: 100%;
+      }
+    }
+
+    /* Style pour le sous-menu des langues avec animation progressive */
+    .language-submenu {
+      list-style: none;
+      padding-left: 20px; // Décalage pour l'indentation
+      margin-top: 5px;
+      max-height: 0;
+      opacity: 0;
+      transform: translateY(-10px);
+      overflow: hidden;
+      transition: max-height 1s ease, opacity 1.5s ease, transform 4s ease;
+    }
+
+    .language-submenu.open {
+      max-height: 200px; /* Ajustez cette valeur selon la hauteur réelle */
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .language-item {
+      margin-bottom: 15px;
+
+      a {
+        text-decoration: none;
+        color: #fff;
+        font-size: 14px;
+        transition: color 0.3s, transform 0.3s;
+        display: block;
+        position: relative;
+        padding: 3px 0;
+
+        &:hover {
+          color: black;
+          transform: translateX(10px);
+        }
+
+        &:after {
+          content: "";
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: black;
+          transition: width 0.3s;
+        }
+
+        &:hover:after {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .footer {
+    margin-top: auto;
+    text-align: center;
+    font-size: 14px;
+    opacity: 0.7;
+  }
+}
+/* ... styles existants ... */
+
+/* Style pour le lien "Afficher plus"/"Afficher moins" */
+.more-categories {
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 5px 0;
+  transition: color 0.3s, transform 0.3s;
+
+  &:hover {
+    color: black;
+    transform: translateX(10px);
+  }
+
+  .more-categories-text {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+  }
+
+  .chevron {
+    transition: transform 0.3s ease;
+    /* Par défaut, la flèche pointe vers le bas */
+  }
+  .chevron.rotated {
+    transform: rotate(180deg); /* La flèche tourne pour pointer vers le haut */
+  }
+}
+
+/* ... suite des styles existants ... */
+

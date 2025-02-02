@@ -1,0 +1,17 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; /* S'assure que la page prend toute la hauteur disponible */
+}
+
+.container-new {
+  display: block;
+  position: relative;
+}
+
+.home-content {
+  display: flex;
+  flex-direction: column;
+  background-color: #f5f5f5;
+  flex-grow: 1; /* Assure que le contenu occupe l'espace restant */
+}
